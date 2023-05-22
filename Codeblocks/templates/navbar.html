@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg ">
-    <a class="navbar-brand" style="color:whitesmoke" href="{% url 'index' %}" class="logo">CodeBlocks</a>
+    <a class="navbar-brand" style="color:whitesmoke" href="{% url 'home' %}" class="logo">CodeBlocks</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a id="nav-link" class="nav-link" style="color:whitesmoke;" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+          <a id="nav-link" class="nav-link" style="color:whitesmoke;" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
           <a id="nav-link" class="nav-link" style="color:whitesmoke" href="#domains">Domains <span class="sr-only">(current)</span></a>
@@ -21,6 +21,25 @@
         <li class="nav-item active">
           <a id="nav-link" class="nav-link" style="color:whitesmoke" href="#contact">Contact</a>
         </li>
+
+        {% if user.is_authenticated %}
+
+        <li class="nav-item active ">
+          <a id="nav-link" class="nav-link"  style="color:whitesmoke" href="">Hello,{{user.username}}</a>
+        </li>
+        <li class="nav-item active">
+          <a id="nav-link" class="nav-link"  style="color:whitesmoke" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+
+        <li class="nav-item active  ">
+          <a id="nav-link" class="nav-link "  style="color:whitesmoke" href="{% url 'signup' %}">Sign Up</a>
+        </li>
+
+        <li class="nav-item active">
+          <a id="nav-link" class="nav-link"  style="color:whitesmoke" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
         
       </ul>
       <form class="form-inline my-2 my-lg-0">
