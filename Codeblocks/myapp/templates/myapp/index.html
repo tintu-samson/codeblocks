@@ -226,7 +226,7 @@ Code Blocks
 <!-- upcoming events -->
 
 <section>
-    <div class="container" id="Discussion">
+    <div class="container" id="events">
         <h2 class="text-center" style="margin-top:100px;"><strong>Upcoming Events</strong></h2>
         <div class="row">
             {% for e in events %}
@@ -244,6 +244,79 @@ Code Blocks
             {% endfor %}
         </div>
     </div>
+</section>
+
+<!-- Discussion -->
+<section>
+    <div class="container" id="Discussion">
+        <h2 class="text-center" style="margin-top:100px;"><strong>Codeblocks Discussion</strong></h2>
+        <div class="row">
+            <div class="scroll-bg1">
+                <div id="scroll-div1" class="col-md-4">
+                    <h3>Browse Topics</h3>
+                    <hr>
+                    <strong><a class="text-dark" href="{% url 'home' %}">All</a></strong>
+                    {% for topic in topics %}
+            
+                    <h3><a class="text-dark" href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a></h3>
+
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="scroll-bg">
+                <div id="scroll-div" class="col-md-8">
+                    <h3>Recent Activities</h3>
+                    {% for message in room_messages %}
+                    <div class="recent-messages">
+                        <small>@{{message.user}} {{message.created|timesince}}</small>
+                        <small>replied to "{{message.room}}"</small>
+                        <p>{{message}}</p>
+
+                        {% if request.user == message.user %}
+                        <a class="btn btn-outline-dark" href="{% url 'delete-message' message.id  %}">Delete</a>
+                        {% endif %}
+                        <hr>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+
+        </div>
+
+        <br>
+
+
+        <h3 id="room_filter" class="rooms-available mx-5 my-4 ">{{room_count}} Rooms available..</h3>
+        <div>
+            <h3><a class="btn btn-outline-light mx-5 my-4" href="{% url 'create-room' %}"><i class="fa-sharp fa-solid fa-plus"></i> Create Room</a></h3>
+            <div class="row gy-3" >
+                {% for r in rooms  %}
+                <div class="col-md-6 h-100">
+                    <div class="card m-4 ">
+                        {% if request.user == r.host %}
+                        <a class="text-center btn btn-outline-info" href="{% url 'update-room' r.id %}">Edit</a>
+                        
+                        <a class="btn btn-outline-info" href="{% url 'delete-room' r.id %}">Delete</a>
+                        {% endif %}
+                        
+                        <!-- <img class="card-img-top" src="{{d.image.url}}" alt="Card image cap"> -->
+                        <div class="card-body text-center ">
+                            <a href="">@{{r.host.username}}</a>
+                        
+                          <h5 class="card-title">{{r.id}}-- <a href="{% url 'room' r.id%}">{{r.name}}</h5></a>
+                          <a href=""><p class="card-text">{{r.desc}}</p></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            
+            </div>
+        </div>
+
+    </div>
+
 </section>
 
 
@@ -322,16 +395,6 @@ Code Blocks
         </div>
     </div>
 </section>
-
-
-
-
-
-
-
-
-
-
 
 
 <!--FOOTER SECTION -->

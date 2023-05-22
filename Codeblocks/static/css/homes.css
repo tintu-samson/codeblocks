@@ -64,6 +64,57 @@ h4,h5,h6{
     font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
+.rooms-available{
+    text-align: center;
+}
+
+.scroll-bg1{
+    
+    width: 400px;
+   max-height: 450px;
+    margin: 2% auto;
+    background-color: #d25e5e;
+    padding: 30px;
+    border-radius: 50px;
+}
+
+#scroll-div1{
+    background-color: rgb(255, 255, 255);
+    color:black;
+    max-width:800px;
+    height:300px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+.scroll-bg{
+    width: 400px;
+    margin: 2% auto;
+    background-color: #111;
+    padding: 30px;
+    border-radius: 50px;
+}
+
+#scroll-div{
+    
+    background-color: rgb(255, 255, 255);
+    color:black;
+    max-width:800px;
+    height:300px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+
+
+.recent-messages{
+    padding: 10px;
+    font-size: 20px;
+}
+
+
 
 
 a{
