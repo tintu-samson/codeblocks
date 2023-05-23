@@ -20,7 +20,8 @@ def index(request):
     rooms=Room.objects.filter(
         Q(topic__name__icontains=q) |
         Q(name__icontains=q) |
-        Q(desc__icontains=q) 
+        Q(desc__icontains=q) |
+        Q()
         )
     room_count = rooms.count()
     room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))

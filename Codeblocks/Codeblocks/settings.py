@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
      
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -132,7 +131,7 @@ STATICFILES_DIRS = [
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 
 
